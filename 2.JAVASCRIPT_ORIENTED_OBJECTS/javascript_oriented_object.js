@@ -44,5 +44,5 @@ nombre("Pierre")("Delgado"); // El segundo parentesis hace referencia a la funci
 var variable = new nombre("Bryan");
 console.log(variable); // aqui puedo ver que variable tiene asignada una funcion, que es la funcion anonima que la que ha retornado la funcion padre nombre
 variable("Carrizales"); // Como se que es la funcion anonima, la invoco pasandole su parametro
-// Al impimirse, esta utiliza sus variable parametros internos asi como las referecnias a las variables y parametros de la funcion padre 
+// Al impimirse, esta utiliza sus variable parametros internos asi como las referecnias a las variables y parametros de la funcion padre
 
