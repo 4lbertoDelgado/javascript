@@ -46,3 +46,52 @@ console.log(variable); // aqui puedo ver que variable tiene asignada una funcion
 variable("Carrizales"); // Como se que es la funcion anonima, la invoco pasandole su parametro
 // Al impimirse, esta utiliza sus variable parametros internos asi como las referecnias a las variables y parametros de la funcion padre
 
+/*
+This
+----------
+Su valor hace referencia al propietario (objeto) de la función que la está invocando o en su defecto, al objeto donde dicha función es un método.
+
+// --- Ejemplo 1,2,3 ---- //
+El valor de this depende de como es invocada una funcion
+
+Cuando se invoca a una funcion desde un objeto, this hace referencia al ambito de ese objeto.
+Cuando se invoca a una funcion sin un objeto, this hace referencia al ambito global
+
+
+
+Articulos a tener en cuenta
+----------------------------
+http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/
+
+*/
+
+// ---- Ejemplo1 --- //
+var myApp1 = {
+  name : 'Megan',
+  lastName : 'Fox',
+  completeName : this.name + this.lastName
+}
+console.log( myApp1.completeName ); // undefined
+
+// ---- Ejemplo2 --- //
+var myApp2 = {
+  name : 'Megan',
+  lastName : 'Fox',
+  completeName : function(){
+    return this.name + ' ' + this.lastName;
+  }
+}
+
+console.log( myApp2.completeName() ); // Megan Fox
+
+ // ---- Ejemplo3 --- //
+var myApp3 = function(){
+  var name = "World"
+  var sayHello = function(){
+    console.log( 'Hello, ' + this.name );
+  };
+  sayHello(); // Invoke the function
+};
+ 
+myApp3(); // Hello, undefined
+
