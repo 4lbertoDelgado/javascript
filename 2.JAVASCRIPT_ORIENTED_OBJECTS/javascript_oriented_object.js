@@ -38,7 +38,7 @@ function nombre(primerNombre) {
     }
 }
 
-// Se puede invocar asi
+// Se puede invocar a la funcion asi
 nombre("Pierre")("Delgado"); // El segundo parentesis hace referencia a la funcion interna
 // O se puede invocar asi tambien
 var variable = new nombre("Bryan");
