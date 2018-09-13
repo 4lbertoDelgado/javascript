@@ -57,7 +57,14 @@ El valor de this depende de como es invocada una funcion
 Cuando se invoca a una funcion desde un objeto, this hace referencia al ambito de ese objeto.
 Cuando se invoca a una funcion sin un objeto, this hace referencia al ambito global
 
+// --- Ejemplo 4 ---- //
+Si tratamos de ejecutar sin más la función printName, ya sabemos que el this apunta al objeto global window e irá ahí a buscar las propiedas name y lastName.
 
+En una arquitectura modular, lo ideal es que esa función pueda ser reaprovechada y que nos permita imprimir los datos de cualquier objeto que cumpla con los requisitos. Para ello, podemos cambiar el valor de this en tiempo de ejecución con el fin de que apunte a ese objeto en cuestión. Para ello, contamos con las funciones nativas apply y call:
+
+hemos ejecutado la función printName dentro del contexto de cada uno de los objetos que hemos pasado como argumento.
+
+La diferencia entre cada uno de estas funciones es que la segunda de ellas, apply, acepta un array como argumento
 
 Articulos a tener en cuenta
 ----------------------------
@@ -95,3 +102,27 @@ var myApp3 = function(){
  
 myApp3(); // Hello, undefined
 
+ // ---- Ejemplo4 --- //
+var person1 = {
+  name : 'Angelina', 
+  lastName : 'Jolie',
+  birthDay : '04/06/1975',
+  lastMovie : 'The Tourist'
+};
+ 
+var person2 = {
+  name : 'Scarlett',
+  lastName : 'Johansson',
+  birthDay : '22/11/1984',
+  lastMovie : 'We bought a Zoo'
+}
+ 
+var printName = function(){
+  console.log( this.name + ' ' + this.lastName );
+}
+
+printName.call( person1 ); // Angelina Jolie
+printName.call( person2 ); // Scarlett Johansson
+ 
+printName.apply( person1 ); // Angelina Jolie
+printName.apply( person2 ); // Scarlett Johansson
