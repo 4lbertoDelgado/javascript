@@ -308,6 +308,30 @@ emotions("happy", function laugh(num) {
 // Devolucion I am happy, haha!
 
 /*
+Expresiones Funcionales
+
+Son funciones que pueden ser autoinvocadas
+Estan de limitadas entre dos ()
+
+Las funciones con nombre se le llama funciones declaradas
+las funciones anonimas asignadas se le llama expresiones funcionales
+las funciones con nombre pero encerradas entre parentesis se le llama expresiones funcionales
+las funciones anonimas pero encerradas entre parentesis se le llama expresiones funcionales
+*/
+
+(function nombreFuncion1() {
+  console.log("Hola desde IIFE");
+})();
+
+(function nombreFuncion2() {
+  console.log("Hola desde IIFE");
+})();
+
+
+
+
+
+/*
 Arrays
 ------------
 
