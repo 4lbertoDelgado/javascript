@@ -440,9 +440,9 @@ El array parámetro obtendrá una referencia a toda la matriz, que es útil si d
 Siempre devuelve undefined
 
 Prints:
-Word 0 en cat, in, hat is cat 
-Word 1 en cat, in, hat en 
-Word 2 in cat, in, hat is hat
+Word 0 in cat,in,hat is cat
+Word 1 in cat,in,hat is in
+Word 2 in cat,in,hat is hat
 */
 
 words = ["cat", "in", "hat"];
@@ -456,7 +456,7 @@ crear una nueva matriz a partir de una matriz existente es simple con el poderos
 
 El map()método acepta un argumento, una función que se usará para manipular cada elemento de la matriz. 
 En el ejemplo, usamos una expresión de función para pasar esa función a map(). 
-Esta función está tomando un argumento, donutque corresponde a cada elemento de la donutsmatriz. 
+Esta función está tomando un argumento, donut que corresponde a cada elemento de la donutsmatriz. 
 Ya no es necesario iterar sobre los índices.
 */
 
@@ -470,6 +470,21 @@ var improvedDonuts = donuts.map(function(donut) {
 
 //donuts array: ["jelly donut", "chocolate donut", "glazed donut"]
 //improvedDonuts array: ["JELLY DONUT HOLE", "CHOCOLATE DONUT HOLE", "GLAZED DONUT HOLE"]
+
+/*
+Nuevo en ES6 for...of
+Con el tipo de datos let, limitamos/encerramos la declaracion de esa variable solo a la esstructura donde se declara.
+En nuestro ejemplo solo lo limita al for, evitando asi colisiones y declaraciones en el global escope
+
+For..of recorre cada elemento de la matriz
+*/
+
+var donuts = ["jelly donut", "chocolate donut", "glazed donut"];
+
+for(let elemento of donuts) {
+  console.log(elemento);
+}
+
 
 /*
 Arrays de Arrays

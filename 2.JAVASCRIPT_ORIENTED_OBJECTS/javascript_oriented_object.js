@@ -14,6 +14,7 @@ Contextos de Ejecucion
 Es el contexto de alcance de las variables a medida que se va ejecutando el codigo
 
 */
+
 /*
 Closures
 ------------------
@@ -45,4 +46,32 @@ var variable = new nombre("Bryan");
 console.log(variable); // aqui puedo ver que variable tiene asignada una funcion, que es la funcion anonima que la que ha retornado la funcion padre nombre
 variable("Carrizales"); // Como se que es la funcion anonima, la invoco pasandole su parametro
 // Al impimirse, esta utiliza sus variable parametros internos asi como las referecnias a las variables y parametros de la funcion padre
+
+/*
+This
+-----------------------------
+url : http://www.etnassoft.com/2012/01/12/el-valor-de-this-en-javascript-como-manejarlo-correctamente/
+
+Su valor hace referencia al propietario de la función que la está invocando o en su defecto, al objeto donde dicha función es un método.
+El propietario de una función es siempre el contexto global. 
+En el caso de los navegadores web, tenemos que recordar que dicho objeto es window:
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
