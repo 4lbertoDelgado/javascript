@@ -327,10 +327,6 @@ las funciones anonimas pero encerradas entre parentesis se le llama expresiones 
   console.log("Hola desde IIFE");
 })();
 
-
-
-
-
 /*
 Arrays
 ------------
@@ -585,17 +581,44 @@ var facebookProfile = {
         facebookProfile.messages.splice(index,1);
     },
     addFriend: function() {
-        if (facebookProfile.friends > 0) {
-            facebookProfile.friends += 1;
-        } else {
           facebookProfile.friends++;  
-        } 
     },
     removeFriend: function() {
         if (facebookProfile.friends > 0) {
            facebookProfile.friends--; 
         }
     }
+}
+
+facebookProfile.postMessage("Hola CTM");
+facebookProfile.postMessage("Chau HDP");
+console.log(facebookProfile.messages);
+
+facebookProfile.addFriend();
+facebookProfile.addFriend();
+console.log(facebookProfile.friends);
+facebookProfile.removeFriend();
+facebookProfile.removeFriend();
+console.log(facebookProfile.friends);
+
+
+// Las variables tambien puedes ser dadas como propiedades de un objeto
+var opinion = "Es uno de mis libros favoritos";
+var libro = {
+    titulo: "IT",
+    autor: "Stephen King",
+    genero: "terror",
+    tags: ["Darryl", "payaso"],
+    opinion: opinion,
+};
+
+/*
+for...in
+Nos permite recorrer un objeto 
+*/
+
+for (var propiedad in libro) {
+  console.log(propiedad + " : " + libro[propiedad]);
 }
 
 // Array de objetos
@@ -610,3 +633,10 @@ var donuts = [
 donuts.forEach(function (e) {
     console.log(e.type + " donuts cost " + e.cost + " each");
 })
+// =
+for (let e of donuts) {
+  console.log(e.type + " donuts cost " + e.cost + " each")
+}
+
+
+
