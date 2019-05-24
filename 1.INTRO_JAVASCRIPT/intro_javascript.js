@@ -491,6 +491,19 @@ var improvedDonuts = donuts.map(function(donut) {
 //donuts array: ["jelly donut", "chocolate donut", "glazed donut"]
 //improvedDonuts array: ["JELLY DONUT HOLE", "CHOCOLATE DONUT HOLE", "GLAZED DONUT HOLE"]
 
+
+/*
+Metodo concat
+Te permite concatenar un array a otro array
+*/
+const donuts = ["jelly donut", "chocolate donut", "glazed donut"];
+const words = ["cat", "in", "hat"];
+
+const array = donuts.concat(words)
+
+console.log(array)
+
+
 /*
 Nuevo en ES6 for...of
 Con el tipo de datos let, limitamos/encerramos la declaracion de esa variable solo a la esstructura donde se declara.
@@ -520,6 +533,39 @@ for (var row = 0; row < donutBox.length; row++) {
     console.log(donutBox[row][column]);
   }
 }
+
+/* 
+Operador ...
+*/
+
+// CASO 01 una forma de pasar los parametros a una funcion
+const displayAllFruits = (fruitA, fruitB, fruitC) => {
+  console.log(fruitA)
+  console.log(fruitB)
+  console.log(fruitC)
+}
+
+displayAllFruits('banana', 'manzana', 'piña')
+
+// -------------
+
+const displayAllFruits2 = (fruitA, ...restFruits) => {
+  console.log(fruitA)  
+  console.log(...resFruits)
+}
+
+displayAllFruits2('banana', 'manzana', 'piña', 'pera')
+
+// CASO 02 una forma de pasar los arrays como valores
+ const fruits = ['banana', 'manzana', 'naranja']
+ const newFruits = [...fruits, 'lemon'] // el operador ... mete todo el array fruits a newFruits
+
+ console.log(fruits)
+ console.log(newFruits)
+
+
+
+
 
 /*
 Objetos
