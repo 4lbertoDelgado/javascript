@@ -805,7 +805,60 @@ const jhonDoe = {
  const {bestFriend: {name}} = jhonDoe
  console.log(name)
 
- 
+// Tambien se puede hacer en array
+
+const matrix = [
+  [2, 4, 6],
+  [5, 6, 8],
+  [9, 1, 0]
+]
+
+const [, [, second]] = matrix
+
+console.log(second)
+
+/* 
+Curring
+Te permite entrar y salir de una funcion
+Lo chulo es que puedo usar la funcion para calcular algo parcialmente y luego ya completo
+Supongamos que primero te llega un dato y luego te lleg el otro dato
+*/
+
+// CASO 01
+// Suma de dos nuemros
+const sum = (a) => {
+  return second = (b) => {
+    return a + b
+  }
+}
+
+const firstSum = sum(5)
+console.log(firstSum(4))
+
+// Lo mismo pero usando funciones flechas
+
+const sum = a => b => a + b
+
+const firstSum = sum(5)
+console.log(firstSum(4))
+
+// CASO 02
+// Con la libreria de lodash/fp podrias curryficar una funcion
+
+// Esto no va a funcionar porque para llamar a sum se debe de usa sum(a, b)
+const sum = (a, b) => {
+  return a + b
+} 
+
+console.log(sum(3)(7)) // error deberia ser sum(a, b)
+
+// para currificar la funcion sum y no de error
+const myCurriFieldSum = lodash.curry(sum)
+
+console.log(sum(3)(7)) // ahora si no error
+
+
+
 /*
 Objetos
 
@@ -923,5 +976,73 @@ for (let e of donuts) {
   console.log(e.type + " donuts cost " + e.cost + " each")
 }
 
+/* 
+Clases en objetos ES5
+Haciendo uso de Prtotype
+El problema de esto es que por un lado tienes la definicion de la clase, y por otro lado tienes la definicion de los metodos
+*/
+
+var Car = function () {
+  this.speed = 0
+  this.started = false
+}
+
+// Una vez que accedo al prototipe, le estoy asignando una nueva entrada
+Car.prototype.startEngine = function () {
+  this.started = true
+}
+
+Car.prototype.offEngine = function () {
+  this.started = false
+  this.speed = 0
+}
+
+Car.prototype.speedUp = function (momt) {
+  if (this.started) {
+    this.speed += momt
+  }
+}
+
+Car.prototype.getSpeed = function () {
+  return this.speed
+}
+
+var car = new Car()
+car.startEngine()
+car.speedUp(3)
+console.log(car.getSpeed())
+car.offEngine()
+console.log(car.getSpeed())
+
+// Si creamos una nueva instancia de la Car y esta llama a sus metodos (funciones), prototype nos asegura que todas las instancias esten llamando a la misma funcion. lo que nos da mayor rendimiento
+
+var car2 = new Car()
+
+/* 
+Clases en Objetos ES6
+Se introduce el concepto de clases
+*/
+
+class Car {
+  constructor() {
+    this.speed = 0;
+    this.started = false;
+  }
+  startEngine() {
+    this.started = true;
+  }
+  offEngine() {
+    this.started = false;
+    this.speed = 0;
+  }
+  speedUp(momt) {
+    if (this.started) {
+      this.speed += momt;
+    }
+  }
+  getSpeed() {
+    return this.speed;
+  }
+}
 
 
