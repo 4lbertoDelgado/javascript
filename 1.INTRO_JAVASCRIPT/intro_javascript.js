@@ -491,19 +491,6 @@ var improvedDonuts = donuts.map(function(donut) {
 //donuts array: ["jelly donut", "chocolate donut", "glazed donut"]
 //improvedDonuts array: ["JELLY DONUT HOLE", "CHOCOLATE DONUT HOLE", "GLAZED DONUT HOLE"]
 
-
-/*
-Metodo concat
-Te permite concatenar un array a otro array
-*/
-const donuts = ["jelly donut", "chocolate donut", "glazed donut"];
-const words = ["cat", "in", "hat"];
-
-const array = donuts.concat(words)
-
-console.log(array)
-
-
 /*
 Nuevo en ES6 for...of
 Con el tipo de datos let, limitamos/encerramos la declaracion de esa variable solo a la esstructura donde se declara.
@@ -535,7 +522,7 @@ for (var row = 0; row < donutBox.length; row++) {
 }
 
 /* 
-Operador ...
+Operador Spreads ...
 */
 
 // CASO 01 una forma de pasar los parametros a una funcion
@@ -563,10 +550,262 @@ displayAllFruits2('banana', 'manzana', 'piña', 'pera')
  console.log(fruits)
  console.log(newFruits)
 
+// CASO 03 con metodo concat que Te permite concatenar un array a otro array
+const fruits = ['banana', 'manzana', 'naranja']
+const colors = ["red", "blue", "black"];
+
+const array = fruits.concat(colors)
+
+console.log(fruits)
+console.log(colors)
+console.log(array)
+
+// -------------
+
+const fruits = ['banana', 'manzana', 'naranja']
+const colors = ["red", "blue", "black"];
+
+const array = [...fruits, 'test', ...colors]
+
+console.log(fruits)
+console.log(colors)
+console.log(array)
+
+/* 
+Metodo assign 
+Creamos un nuevo objeto  partir del anterior con metodo assign
+Primer parametro : {} indica que es un objeto el que se va a asignar y 
+Se pasa vacio para que no modifique el objeto base, si se le agrega propiedades al objeto vacio, este agrega propiedades al objeto base. Por lo regular se usa un objeto vacio
+Segundo parametro : jhonDoe indica el objeto puntual
+Tercer parametro : se coloca la propiedad que se va a modificar 
+*/
+console.clear()
 
 
+const empleadoBase = {
+  nombre: 'nadie',
+  apellido: 'nadie',
+  cargo: 'raso',
+  sexo: 'indefinido',
+  numeroPies : 2
+}
 
+const creaUnDirector = (nuevoCargo) => {
+  return Object.assign({}, empleadoBase, nuevoCargo)
+}
 
+console.log(creaUnDirector({nombre: 'Juan', apellido: 'Capullez', cargo: 'Director', sexo: 'M'}))
+console.log(creaUnDirector({nombre: 'Pepe', apellido: 'Capullez', cargo: 'Director', sexo: 'M'}))
+
+// -------------
+
+const jhonDoe = {
+  name: 'Jhon',
+  last: 'Doe',
+  city: 'London'
+}
+
+const janeDoe = Object.assign({}, jhonDoe, {
+  name: 'Jane'
+})
+
+console.log(jhonDoe)
+console.log(janeDoe)
+
+// Lo mismo que se hace con el metodo assign se puede hacer con el operador ...
+// copiamos los valores del objeto jhonDoe en jackDoe y modificamos su propiedad name
+
+const jhonDoe = {
+  name: 'Jhon',
+  last: 'Doe',
+  city: 'London'
+}
+
+const janeDoe = Object.assign({}, jhonDoe, {
+  name: 'Jane'
+})
+
+// Tener cuidado con el orden, ya que lo ultimo es lo que prevalece
+const jackDoe = {
+  ...jhonDoe,
+  name: 'Jack'
+}
+console.log(jhonDoe)
+console.log(janeDoe)
+console.log(jackDoe)
+
+/*
+Destructuring
+En Arrays
+*/
+
+// CASO 01
+
+const friends = ['James', 'Jhon', 'Jane']
+
+const first = friends[0]
+const second = friends[1]
+
+console.log(first)
+console.log(second)
+
+// Hace lo mismo que arriba, pero asigna los valores de un array a variables directamente
+// si se desea saltar un elemento del array, se coloca comas vacias
+
+const friends = ['James', 'Jhon', 'Jane']
+
+const [first, , third] = friends
+
+console.log(first)
+console.log(third)
+
+// CASO 02
+// Haciendo uso de spreds tambien
+
+const friends = ['James', 'Jhon', 'Jane']
+
+const [first, ...otherFriends] = friends
+
+console.log(first)
+console.log(otherFriends)
+
+// CASO 03
+// Tambien se puede usar en arrays que son devuelto por funciones
+
+const getPeopleRoom = () => {
+  return ['Braulio', 'Jaime', 'Dani']
+}
+
+const [first, second] = getPeopleRoom()
+console.log(first, second)
+
+// CASO 04
+// Tambien se puede hacer intrcambio de valores de variables
+
+let a = 'Jhon'
+let b = 'Aaron'
+let tmp
+
+tmp = a
+a = b
+b = tmp
+
+console.log(a, b)
+
+//----------------
+
+let a = 'Jhon'
+let b = 'Aaron'
+
+// Lo que estamos haciendo es crear un array con los valores invertidos
+// y usar destructuring para asignarlos a las variables a y b
+// asi ya no usamos una variable tmp
+[a, b] = [b, a]
+
+console.log(a, b)
+
+// CASO 05
+// Tambien se puede usar en argumentos de funciones
+
+const showFruits = (passedFruits) => {
+  console.log(passedFruits)
+}
+
+const fruits = ['orange', 'pomelo', 'apple']
+showFruits(fruits)
+
+// como passedFruits es un array tambien se puede usar destructuring
+
+const showFruits = ([first, ...others]) => {
+  console.log(first, others)
+}
+
+const fruits = ['orange', 'pomelo', 'apple']
+showFruits(fruits)
+
+/*
+Destructuring
+En Objetos
+*/
+
+// CASO 01
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe'
+}
+
+const surname = jhonDoe.surname
+
+console.log(surname)
+
+// --------------------
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe'
+}
+
+// aqui se tiene que colocar el valor de la propiedad que se quiere recuperar
+const { surname } = jhonDoe
+
+console.log(surname)
+
+// CASO 02
+// destructuring en funciones con objetos   
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe'
+}
+
+const great = (person) => {
+  console.log('Hello ' + person.name)
+}
+
+great(jhonDoe)
+
+// para no llevar a todo el objeto como parametro, se puede usar destructuring para solo llevar el parametro que se necesita
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe'
+}
+
+const great = ({name}) => {
+  console.log('Hello ' + name)
+}
+
+great(jhonDoe)
+
+// CASO 03 
+// en caso se desee consumir una propiedad que no exista del objeto, se le puede asignar un valor por defecto
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe'
+}
+
+const {name, surname, age = 17} = jhonDoe
+
+console.log(name, surname, age)
+
+// CASO 04 destructuring de destructuring sobre objetos, casi no se usa
+// Es decir sacar una propiedad de un objeto que esta en otro objeto
+
+const jhonDoe = {
+  name: 'Jhon',
+  surname: 'Doe',
+  bestFriend : {
+    name: 'Anna',
+    surname: 'Smith'
+  }
+}
+
+ const {bestFriend: {name}} = jhonDoe
+ console.log(name)
+
+ 
 /*
 Objetos
 
